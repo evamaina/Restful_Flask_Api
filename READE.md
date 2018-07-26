@@ -1,1 +1,1 @@
-Simle Flask_RESTful Application with python
+Simple Flask_RESTful Application with python
