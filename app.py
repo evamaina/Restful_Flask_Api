@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from flask_restful import Resource, Api
 
 app = Flask(__name__)
@@ -15,14 +15,15 @@ class Student(Resource):
 		return{'item':None}, 404
 
 	def post(self,name):
-		item = {'name':name, 'price':12.00}
+		data= request.get_json()
+		item = {'name':name, 'price':data['price']}
 		items.append(item)
 		return item, 201
 
 class ItemList(Resource):
 	def get(self):
 		return {'items':items}
-		pass
+		
 
 api.add_resource(Student, '/student/<string:name>')
 api.add_resource(ItemList, '/items')
